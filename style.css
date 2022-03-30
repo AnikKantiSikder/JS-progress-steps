@@ -29,6 +29,10 @@ body {
     /* background-color: red; */
 }
 
+h1 {
+    margin-bottom: 3rem;
+}
+
 .progress-container {
     display: flex;
     justify-content: space-between;
