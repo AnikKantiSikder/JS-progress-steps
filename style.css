@@ -1,4 +1,10 @@
 
+/* Custom color using: variable declaration */
+:root {
+    --line--border-fill: #3498db;
+    --line--border--empty: #e0e0e0;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -8,9 +14,9 @@ html {
 }
 
 body {
+    background-color: #f6f7fb;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -18,23 +24,86 @@ body {
     margin: 0;
 }
 
-.bg {
-    background: url('hero.jpg') no-repeat;
-    background-position: top;
-    background-size: cover;
+.container {
+    text-align: center;
+    /* background-color: red; */
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    max-width: 100%;
+    width: 35rem;
+    position: relative;
+}
+
+.progress-container::before {
+    content: '';
+    background-color: var(--line--border--empty);
     position: absolute;
-    top: -30px;
-    left: -30px;
-    width: calc(100vw + 60px);
-    height: calc(100vh + 60px);
-    /* To put the image behind the text z-index:-1 */
+    top: 50%;
+    left: 0;
+    /* Put the line in the middle */
+    transform: translateY(-50%);
+    width: 100%;
+    height: 4px;
+    /* Put the line behind the circle */
     z-index: -1;
-    filter: blur(0px);
 }
 
-.loading-text {
-    font-size: 5rem;
+.progress {
+    background-color: var(--line--border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    /* Put the line in the middle */
+    transform: translateY(-50%);
+    width: 0%;
+    height: 4px;
+    /* Put the line behind the circle */
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+.circle {
+    background-color: #fff;
+    color: #999;
+    border: 3px solid var(--line--border--empty);
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+}
+
+.circle.active {
+    border-color: #3498db;
+}
+
+.btn {
+    background-color: var(--line--border-fill);
     color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
 }
 
-/* https://images.unsplash.com/photo-1576161787924-01bb08dad4a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2104&q=80 */
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:disabled {
+    background-color: var(--line--border--empty);
+    cursor: not-allowed;
+}
